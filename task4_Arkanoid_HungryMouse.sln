@@ -9,7 +9,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arkanoid_HungryMouse", "Arkanoid_HungryMouse\Arkanoid_HungryMouse.csproj", "{31274086-E75F-4216-B590-79EF58A6DB0E}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31274086-E75F-4216-B590-79EF58A6DB0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31274086-E75F-4216-B590-79EF58A6DB0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31274086-E75F-4216-B590-79EF58A6DB0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31274086-E75F-4216-B590-79EF58A6DB0E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
