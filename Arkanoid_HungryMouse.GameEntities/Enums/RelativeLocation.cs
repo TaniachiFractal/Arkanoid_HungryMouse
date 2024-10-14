@@ -9,6 +9,7 @@
         AtTheLeft = 2,
         AtTheRight = 3,
         AtTheBottom = 4,
-        Inside = 5,
+        Intersect = 5,
+        Outside = 6,
     }
 }

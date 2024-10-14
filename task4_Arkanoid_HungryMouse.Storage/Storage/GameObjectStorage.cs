@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Arkanoid_HungryMouse.GameEntities.Enums;
 using Arkanoid_HungryMouse.GameEntities.Interfaces;
 using Arkanoid_HungryMouse.GameEntities.Models;
@@ -52,6 +51,8 @@ namespace task4_Arkanoid_HungryMouse.Storage.Storage
                 Height = Const.ShortDimen,
                 Width = Const.ShortDimen,
                 Destroyed = false,
+                VerticalDirection = Direction.Up,
+                SpeedX = -Const.Step,
             };
 
             PlayerTable = new PlayerTable
@@ -85,8 +86,8 @@ namespace task4_Arkanoid_HungryMouse.Storage.Storage
                 {
                     var box = new Box
                     {
-                        X = Const.BoxesMargin * 2 + Const.BoxesMargin * (col + 1) + col * Const.LongDimen,
-                        Y = Const.BoxesMargin * 2 + Const.BoxesMargin * (row + 1) + row * Const.ShortDimen,
+                        X = (Const.BoxesMargin * 2) + (Const.BoxesMargin * (col + 1)) + (col * Const.LongDimen),
+                        Y = (Const.BoxesMargin * 2) + (Const.BoxesMargin * (row + 1)) + (row * Const.ShortDimen),
                         Height = Const.ShortDimen,
                         Width = Const.LongDimen,
                         Destroyed = false,
@@ -104,26 +105,48 @@ namespace task4_Arkanoid_HungryMouse.Storage.Storage
 
         public RelativeLocation GetRelativeLocation(IGameObject relativeTo, IGameObject gameObject)
         {
-            if (gameObject.Y > relativeTo.Y + relativeTo.Height)
-            {
-                return RelativeLocation.AtTheBottom;
-            }
-            else if (gameObject.Y < relativeTo.Y)
-            {
-                return RelativeLocation.AtTheTop;
-            }
-            else if (gameObject.X > relativeTo.X + relativeTo.Width)
-            {
-                return RelativeLocation.AtTheRight;
-            }
-            else if (gameObject.X < relativeTo.X)
+            if (gameObject.X + gameObject.Width < relativeTo.X)
             {
                 return RelativeLocation.AtTheLeft;
             }
+            if (gameObject.X > relativeTo.X + relativeTo.Width)
+            {
+                return RelativeLocation.AtTheRight;
+            }
+            if (gameObject.Y + gameObject.Height < relativeTo.Y)
+            {
+                return RelativeLocation.AtTheTop;
+            }
+            if (gameObject.Y + gameObject.Height > relativeTo.Y + relativeTo.Height)
+            {
+                return RelativeLocation.AtTheBottom;
+            }
             else
             {
-                return RelativeLocation.Inside;
+                if (relativeTo.GetType() == typeof(Field))
+                {
+                    if (gameObject.X < 0)
+                    {
+                        return RelativeLocation.AtTheLeft;
+                    }
+                    if (gameObject.Y < 0)
+                    {
+                        return RelativeLocation.AtTheTop;
+                    }
+                    if (gameObject.X + gameObject.Width > relativeTo.Width)
+                    {
+                        return RelativeLocation.AtTheRight;
+                    }
+                    if (gameObject.Y + gameObject.Height > relativeTo.Height)
+                    {
+                        return RelativeLocation.AtTheBottom;
+                    }
+                    return RelativeLocation.Intersect;
+                }
+                else
+                { return RelativeLocation.Intersect; }
             }
+
         }
     }
 }

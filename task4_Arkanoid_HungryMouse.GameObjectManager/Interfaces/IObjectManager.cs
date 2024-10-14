@@ -39,5 +39,20 @@ namespace task4_Arkanoid_HungryMouse.GameObjectManager.Interfaces
         /// </summary>
         RelativeLocation GetRelativeLocation(IGameObject relativeTo, IGameObject gameObject);
 
+        /// <summary>
+        /// Сдвинуть объект в направлении
+        /// </summary>
+        void Move(IGameObject gameObject, Direction direction);
+
+        /// <summary>
+        /// Установить объекту статус "Разрушен"
+        /// </summary>
+        void SetDestroyed(IGameObject gameObject);
+
+        /// <summary>
+        /// Обновить все объекты: Проверить пересечения, уничтожить то, что надо; Сдвинуть <see cref="Mouse"/> и <see cref="PlayerTable"/>
+        /// </summary>
+        /// <returns>Состояние игры после обновления</returns>
+        GameState UpdateAll(Direction tableDirection);
     }
 }

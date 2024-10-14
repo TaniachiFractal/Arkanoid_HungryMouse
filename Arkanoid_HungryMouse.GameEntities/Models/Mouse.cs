@@ -1,4 +1,5 @@
-﻿using Arkanoid_HungryMouse.GameEntities.Interfaces;
+﻿using Arkanoid_HungryMouse.GameEntities.Enums;
+using Arkanoid_HungryMouse.GameEntities.Interfaces;
 
 namespace Arkanoid_HungryMouse.GameEntities.Models
 {
@@ -12,5 +13,15 @@ namespace Arkanoid_HungryMouse.GameEntities.Models
         public int Width { get; set; }
         public int Height { get; set; }
         public bool Destroyed { get; set; }
+
+        /// <summary>
+        /// Скорость мыши по горизонтали
+        /// </summary>
+        public int SpeedX { get; set; }
+
+        /// <summary>
+        /// Направление мыши по вертикали
+        /// </summary>
+        public Direction VerticalDirection { get; set; }
     }
 }

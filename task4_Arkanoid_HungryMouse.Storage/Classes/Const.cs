@@ -24,8 +24,9 @@ namespace task4_Arkanoid_HungryMouse.Storage.Classes
         /// Начальная Y координата <see cref="PlayerTable"/>
         /// </summary>
         public const int TableStartY = 700;
+
         /// <summary>
-        /// Шаг сдвига столика
+        /// Шаг сдвига объектов при анимации
         /// </summary>
         public const int Step = 10;
 

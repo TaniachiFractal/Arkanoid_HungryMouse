@@ -1,9 +1,7 @@
 ﻿using System.Drawing;
-using System.Runtime.Serialization;
 using System.Windows.Forms;
 using Arkanoid_HungryMouse.GameEntities.Enums;
 using task4_Arkanoid_HungryMouse.GameObjectManager.Manager;
-using task4_Arkanoid_HungryMouse.Storage.Classes;
 
 namespace Arkanoid_HungryMouse
 {
@@ -14,6 +12,8 @@ namespace Arkanoid_HungryMouse
     {
         private readonly GameObjectManager mgr;
         private readonly Graphics canvas;
+        private Direction tableDirection;
+        private readonly Timer animTimer;
 
         /// <summary>
         /// Конструктор: указать прослойку
@@ -27,7 +27,7 @@ namespace Arkanoid_HungryMouse
 
             canvas = GameField.CreateGraphics();
 
-            var animTimer = new Timer
+            animTimer = new Timer
             {
                 Interval = 30
             };
@@ -35,9 +35,53 @@ namespace Arkanoid_HungryMouse
             animTimer.Start();
         }
 
+        private void MainGameForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            tableDirection = Direction.Stay;
+        }
+
+        private void MainGameForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                    {
+                        tableDirection = Direction.Left;
+                        break;
+                    }
+                case Keys.Right:
+                    {
+                        tableDirection = Direction.Right;
+                        break;
+                    }
+            }
+        }
+
         private void AnimationTimer_Tick(object sender, System.EventArgs e)
         {
-            Draw();
+            var gameState = mgr.UpdateAll(tableDirection);
+            switch (gameState)
+            {
+                case GameState.Won:
+                    {
+                        UpdateOutput();
+                        animTimer.Stop();
+                        animTimer.Enabled = false;
+                        MessageBox.Show("Победа!", "Победа!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Application.Exit();
+                        break;
+                    }
+                case GameState.Lost:
+                    {
+                        UpdateOutput();
+                        animTimer.Stop();
+                        animTimer.Enabled = false;
+                        MessageBox.Show("Поражение!", "Поражение!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        Application.Exit();
+                        break;
+                    }
+            }
+            UpdateOutput();
         }
 
         private void InitObjectData()
@@ -49,13 +93,13 @@ namespace Arkanoid_HungryMouse
             });
             mgr.ChangeObjectData(mgr.GetPlayerTable(), table =>
             {
-                table.Y = GameField.Height - table.Height / 2;
-                table.X = GameField.Width / 2 - table.Width / 2;
+                table.Y = GameField.Height - (table.Height / 2);
+                table.X = (GameField.Width / 2) - (table.Width / 2);
             });
             mgr.ChangeObjectData(mgr.GetMouse(), mouse =>
             {
-                mouse.X = GameField.Width / 2 - mouse.Width / 2;
-                mouse.Y = GameField.Height - (int)(mouse.Height * 1.5);
+                mouse.X = (GameField.Width / 2) - (mouse.Width / 2);
+                mouse.Y = GameField.Height - mouse.Height * 2;
             });
         }
 
@@ -68,9 +112,16 @@ namespace Arkanoid_HungryMouse
             newGraphics.DrawImage(Properties.Resources.table, mgr.GetPlayerTable().X, mgr.GetPlayerTable().Y);
             foreach (var box in mgr.GetBoxes())
             {
-                newGraphics.DrawImage(GetBoxImage(box.BoxType), box.X, box.Y);
+                if (!box.Destroyed)
+                { newGraphics.DrawImage(GetBoxImage(box.BoxType), box.X, box.Y); }
             }
             canvas.DrawImage(newImage, 0, 0);
+        }
+
+        private void UpdateOutput()
+        {
+            Draw();
+            InfoLabel.Text = $"Счёт: {mgr.GetDestroyedCount()}";
         }
 
         private Bitmap GetBoxImage(BoxTypes boxType)
@@ -97,5 +148,6 @@ namespace Arkanoid_HungryMouse
                     return Properties.Resources.wheat;
             }
         }
+
     }
 }

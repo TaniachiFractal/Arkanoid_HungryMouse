@@ -91,6 +91,8 @@
             this.Name = "MainGameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Голодная Мышь";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainGameForm_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainGameForm_KeyUp);
             this.InfoStrip.ResumeLayout(false);
             this.InfoStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GameField)).EndInit();
