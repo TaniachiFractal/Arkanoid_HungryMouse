@@ -49,10 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\BoxTypes.cs" />
     <Compile Include="Interfaces\IGameObject.cs" />
     <Compile Include="Models\Box.cs" />
     <Compile Include="Models\Field.cs" />
-    <Compile Include="Models\RelativeLocation.cs" />
+    <Compile Include="Enums\RelativeLocation.cs" />
     <Compile Include="Models\Mouse.cs" />
     <Compile Include="Models\PlayerTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

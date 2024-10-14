@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using System.Windows.Forms;
+using task4_Arkanoid_HungryMouse.GameObjectManager.Manager;
+using task4_Arkanoid_HungryMouse.Storage.Storage;
 
 namespace Arkanoid_HungryMouse
 {
@@ -13,7 +16,9 @@ namespace Arkanoid_HungryMouse
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainGameForm());
+            var objectStorage = new GameObjectStorage();
+            var objectManager = new GameObjectManager(objectStorage);
+            Application.Run(new MainGameForm(objectManager));
         }
     }
 }

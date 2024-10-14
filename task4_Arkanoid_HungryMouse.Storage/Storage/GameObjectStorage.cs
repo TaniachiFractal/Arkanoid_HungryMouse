@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Arkanoid_HungryMouse.GameEntities.Enums;
 using Arkanoid_HungryMouse.GameEntities.Interfaces;
 using Arkanoid_HungryMouse.GameEntities.Models;
 using task4_Arkanoid_HungryMouse.Storage.Classes;
@@ -17,22 +19,22 @@ namespace task4_Arkanoid_HungryMouse.Storage.Storage
         /// <summary>
         /// <inheritdoc cref="Arkanoid_HungryMouse.GameEntities.Models.Mouse"/>
         /// </summary>
-        private Mouse Mouse { get; }
+        public Mouse Mouse { get; }
 
         /// <summary>
         /// <inheritdoc cref="Arkanoid_HungryMouse.GameEntities.Models.PlayerTable"/>
         /// </summary>
-        private PlayerTable PlayerTable { get; }
+        public PlayerTable PlayerTable { get; }
 
         /// <summary>
         /// <inheritdoc cref="Arkanoid_HungryMouse.GameEntities.Models.Field"/>
         /// </summary>
-        private Field Field { get; }
+        public Field Field { get; }
 
         /// <summary>
         /// Лист всех <see cref="Boxes"/>
         /// </summary>
-        private List<Box> Boxes { get; }
+        public List<Box> Boxes { get; }
 
         #endregion
 
@@ -75,18 +77,22 @@ namespace task4_Arkanoid_HungryMouse.Storage.Storage
 
         private void GenerateBoxes()
         {
+            var BoxTypes = (BoxTypes[])Enum.GetValues(typeof(BoxTypes));
+            var rnd = new Random();
             for (var row = 0; row < Const.BoxListRows; row++)
             {
                 for (var col = 0; col < Const.BoxListCols; col++)
                 {
                     var box = new Box
                     {
-                        X = Const.BoxesMargin + row * Const.LongDimen,
-                        Y = Const.BoxesMargin + row * Const.ShortDimen,
+                        X = Const.BoxesMargin * 2 + Const.BoxesMargin * (col + 1) + col * Const.LongDimen,
+                        Y = Const.BoxesMargin * 2 + Const.BoxesMargin * (row + 1) + row * Const.ShortDimen,
                         Height = Const.ShortDimen,
                         Width = Const.LongDimen,
                         Destroyed = false,
+                        BoxType = BoxTypes[rnd.Next(BoxTypes.Length)],
                     };
+                    Boxes.Add(box);
                 }
             }
         }

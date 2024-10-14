@@ -1,4 +1,4 @@
-﻿namespace Arkanoid_HungryMouse.GameEntities.Models
+﻿namespace Arkanoid_HungryMouse.GameEntities.Enums
 {
     /// <summary>
     /// Варианты расположений объекта относительно другого

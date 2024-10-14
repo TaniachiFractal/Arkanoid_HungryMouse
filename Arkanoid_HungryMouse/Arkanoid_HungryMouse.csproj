@@ -117,5 +117,19 @@
     <None Include="Resources\help.png" />
     <Content Include="Resources\mouseIcon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Arkanoid_HungryMouse.GameEntities\Arkanoid_HungryMouse.GameEntities.csproj">
+      <Project>{5FD936FE-41AF-4367-B012-76718B136BFE}</Project>
+      <Name>Arkanoid_HungryMouse.GameEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\task4_Arkanoid_HungryMouse.GameObjectManager\task4_Arkanoid_HungryMouse.GameObjectManager.csproj">
+      <Project>{c251c1af-139c-4352-9652-cd8d5607f8a6}</Project>
+      <Name>task4_Arkanoid_HungryMouse.GameObjectManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\task4_Arkanoid_HungryMouse.Storage\task4_Arkanoid_HungryMouse.Storage.csproj">
+      <Project>{9CCFE9BC-AD12-4BB8-B7F9-3EFE257F6683}</Project>
+      <Name>task4_Arkanoid_HungryMouse.Storage</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

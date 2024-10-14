@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainGameForm));
             this.InfoStrip = new System.Windows.Forms.ToolStrip();
             this.InfoLabel = new System.Windows.Forms.ToolStripLabel();
-            this.HelpButton = new System.Windows.Forms.ToolStripButton();
+            this.InfoButton = new System.Windows.Forms.ToolStripButton();
             this.GameField = new System.Windows.Forms.PictureBox();
             this.InfoStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GameField)).BeginInit();
@@ -43,7 +43,7 @@
             this.InfoStrip.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InfoStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.InfoLabel,
-            this.HelpButton});
+            this.InfoButton});
             this.InfoStrip.Location = new System.Drawing.Point(0, 0);
             this.InfoStrip.Name = "InfoStrip";
             this.InfoStrip.Size = new System.Drawing.Size(750, 25);
@@ -57,19 +57,18 @@
             this.InfoLabel.Size = new System.Drawing.Size(22, 22);
             this.InfoLabel.Text = "lb";
             // 
-            // HelpButton
+            // InfoButton
             // 
-            this.HelpButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.HelpButton.Image = global::Arkanoid_HungryMouse.Properties.Resources.help;
-            this.HelpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.HelpButton.Name = "HelpButton";
-            this.HelpButton.Size = new System.Drawing.Size(23, 22);
-            this.HelpButton.Text = "Помощь";
+            this.InfoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.InfoButton.Image = global::Arkanoid_HungryMouse.Properties.Resources.help;
+            this.InfoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.InfoButton.Name = "InfoButton";
+            this.InfoButton.Size = new System.Drawing.Size(23, 22);
+            this.InfoButton.Text = "Помощь";
             // 
             // GameField
             // 
             this.GameField.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GameField.Image = global::Arkanoid_HungryMouse.Properties.Resources.gradientBG;
             this.GameField.Location = new System.Drawing.Point(0, 25);
             this.GameField.Name = "GameField";
             this.GameField.Size = new System.Drawing.Size(750, 750);
@@ -105,6 +104,6 @@
         private System.Windows.Forms.ToolStrip InfoStrip;
         private System.Windows.Forms.PictureBox GameField;
         private System.Windows.Forms.ToolStripLabel InfoLabel;
-        private System.Windows.Forms.ToolStripButton HelpButton;
+        private System.Windows.Forms.ToolStripButton InfoButton;
     }
 }

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IObjectManager.cs" />
+    <Compile Include="Manager\GameObjectManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -73,9 +74,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Manager\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Arkanoid_HungryMouse.GameEntities\Arkanoid_HungryMouse.GameEntities.csproj">
       <Project>{5FD936FE-41AF-4367-B012-76718B136BFE}</Project>

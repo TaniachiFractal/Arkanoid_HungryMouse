@@ -23,7 +23,11 @@ namespace task4_Arkanoid_HungryMouse.Storage.Classes
         /// <summary>
         /// Начальная Y координата <see cref="PlayerTable"/>
         /// </summary>
-        public const int TableStartY = 500;
+        public const int TableStartY = 700;
+        /// <summary>
+        /// Шаг сдвига столика
+        /// </summary>
+        public const int Step = 10;
 
         /// <summary>
         /// Ввысота <see cref="Field"/>
@@ -55,8 +59,6 @@ namespace task4_Arkanoid_HungryMouse.Storage.Classes
         /// Размер короткого объекта
         /// </summary>
         public const int ShortDimen = 64;
-
-
 
     }
 }

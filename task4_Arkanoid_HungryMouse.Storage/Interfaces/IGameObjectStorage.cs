@@ -1,6 +1,6 @@
 ﻿using System;
+using Arkanoid_HungryMouse.GameEntities.Enums;
 using Arkanoid_HungryMouse.GameEntities.Interfaces;
-using Arkanoid_HungryMouse.GameEntities.Models;
 
 namespace task4_Arkanoid_HungryMouse.Storage.Interfaces
 {
