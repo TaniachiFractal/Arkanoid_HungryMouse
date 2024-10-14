@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainGameForm));
             this.InfoStrip = new System.Windows.Forms.ToolStrip();
             this.InfoLabel = new System.Windows.Forms.ToolStripLabel();
-            this.GameField = new System.Windows.Forms.PictureBox();
             this.HelpButton = new System.Windows.Forms.ToolStripButton();
+            this.GameField = new System.Windows.Forms.PictureBox();
             this.InfoStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GameField)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +57,15 @@
             this.InfoLabel.Size = new System.Drawing.Size(22, 22);
             this.InfoLabel.Text = "lb";
             // 
+            // HelpButton
+            // 
+            this.HelpButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.HelpButton.Image = global::Arkanoid_HungryMouse.Properties.Resources.help;
+            this.HelpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.HelpButton.Name = "HelpButton";
+            this.HelpButton.Size = new System.Drawing.Size(23, 22);
+            this.HelpButton.Text = "Помощь";
+            // 
             // GameField
             // 
             this.GameField.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -66,15 +75,6 @@
             this.GameField.Size = new System.Drawing.Size(750, 750);
             this.GameField.TabIndex = 1;
             this.GameField.TabStop = false;
-            // 
-            // HelpButton
-            // 
-            this.HelpButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.HelpButton.Image = global::Arkanoid_HungryMouse.Properties.Resources.help;
-            this.HelpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.HelpButton.Name = "HelpButton";
-            this.HelpButton.Size = new System.Drawing.Size(23, 22);
-            this.HelpButton.Text = "Помощь";
             // 
             // MainGameForm
             // 
