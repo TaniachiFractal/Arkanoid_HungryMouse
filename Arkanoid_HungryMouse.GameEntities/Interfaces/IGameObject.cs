@@ -18,11 +18,16 @@
         /// <summary>
         /// Ширина объекта
         /// </summary>
-        int Width { get; }
+        int Width { get; set; }
 
         /// <summary>
         /// Высота объекта
         /// </summary>
-        int Height { get; }
+        int Height { get; set; }
+
+        /// <summary>
+        /// Разрушен ли объект
+        /// </summary>
+        bool Destroyed { get; set; }
     }
 }

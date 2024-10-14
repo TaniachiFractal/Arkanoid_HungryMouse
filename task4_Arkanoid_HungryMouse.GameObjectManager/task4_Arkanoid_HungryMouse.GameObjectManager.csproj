@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5FD936FE-41AF-4367-B012-76718B136BFE}</ProjectGuid>
+    <ProjectGuid>{C251C1AF-139C-4352-9652-CD8D5607F8A6}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Arkanoid_HungryMouse.GameEntities</RootNamespace>
-    <AssemblyName>Arkanoid_HungryMouse.GameEntities</AssemblyName>
+    <RootNamespace>task4_Arkanoid_HungryMouse.GameObjectManager</RootNamespace>
+    <AssemblyName>task4_Arkanoid_HungryMouse.GameObjectManager</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -49,12 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IGameObject.cs" />
-    <Compile Include="Models\Box.cs" />
-    <Compile Include="Models\Field.cs" />
-    <Compile Include="Models\RelativeLocation.cs" />
-    <Compile Include="Models\Mouse.cs" />
-    <Compile Include="Models\PlayerTable.cs" />
+    <Compile Include="Interfaces\IObjectManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -77,6 +72,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Manager\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Arkanoid_HungryMouse.GameEntities\Arkanoid_HungryMouse.GameEntities.csproj">
+      <Project>{5FD936FE-41AF-4367-B012-76718B136BFE}</Project>
+      <Name>Arkanoid_HungryMouse.GameEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\task4_Arkanoid_HungryMouse.Storage\task4_Arkanoid_HungryMouse.Storage.csproj">
+      <Project>{9CCFE9BC-AD12-4BB8-B7F9-3EFE257F6683}</Project>
+      <Name>task4_Arkanoid_HungryMouse.Storage</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

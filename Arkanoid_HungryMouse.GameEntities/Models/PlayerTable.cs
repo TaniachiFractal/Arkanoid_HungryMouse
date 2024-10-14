@@ -7,25 +7,10 @@ namespace Arkanoid_HungryMouse.GameEntities.Models
     /// </summary>
     public class PlayerTable : IGameObject
     {
-        /// <summary>
-        /// <inheritdoc cref="IGameObject.X"/>
-        /// </summary>
         public int X { get; set; }
-
-        /// <summary>
-        /// <inheritdoc cref="IGameObject.Y"/>
-        /// </summary>
         public int Y { get; set; }
-
-        /// <summary>
-        /// <inheritdoc cref="IGameObject.Width"/>
-        /// </summary>
-        public int Width => 128;
-
-        /// <summary>
-        /// <inheritdoc cref="IGameObject.Height"/>
-        /// </summary>
-        public int Height => 64;
-
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public bool Destroyed { get; set; }
     }
 }

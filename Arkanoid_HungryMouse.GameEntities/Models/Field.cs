@@ -3,9 +3,9 @@
 namespace Arkanoid_HungryMouse.GameEntities.Models
 {
     /// <summary>
-    /// <see cref="IGameObject"/> Коробка, которую разрушает <see cref="Mouse"/>
+    /// Игровое поле <see cref="IGameObject"/>
     /// </summary>
-    public class Box : IGameObject
+    public class Field : IGameObject
     {
         public int X { get; set; }
         public int Y { get; set; }
