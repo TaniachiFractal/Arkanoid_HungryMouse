@@ -1,4 +1,4 @@
-﻿namespace Arkanoid_HungryMouse.GameEntities.Enums
+﻿namespace Arkanoid_HungryMouse.Enums
 {
     /// <summary>
     /// Состояния игры

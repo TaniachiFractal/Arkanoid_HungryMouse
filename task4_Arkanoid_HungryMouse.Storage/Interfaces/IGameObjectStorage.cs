@@ -1,22 +1,22 @@
 ﻿using System;
-using Arkanoid_HungryMouse.GameEntities.Enums;
-using Arkanoid_HungryMouse.GameEntities.Interfaces;
+using Arkanoid_HungryMouse.Enums;
+using Arkanoid_HungryMouse.GameEntities.AbstractClasses;
 
-namespace task4_Arkanoid_HungryMouse.Storage.Interfaces
+namespace Arkanoid_HungryMouse.Storage.Interfaces
 {
     /// <summary>
-    /// Хранилище <see cref="IGameObject"/>
+    /// Хранилище <see cref="GameObject"/>
     /// </summary>
     public interface IGameObjectStorage
     {
         /// <summary>
         /// Изменить объект
         /// </summary>
-        void ChangeObjectData(IGameObject gameObject, Action<IGameObject> action);
+        void ChangeObjectData(GameObject gameObject, Action<GameObject> action);
 
         /// <summary>
         /// Получить относительное расположение двух объектов
         /// </summary>
-        RelativeLocation GetRelativeLocation(IGameObject relativeTo, IGameObject gameObject);
+        RelativeLocation GetRelativeLocation(GameObject relativeTo, GameObject gameObject);
     }
 }

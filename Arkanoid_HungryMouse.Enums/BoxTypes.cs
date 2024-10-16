@@ -1,9 +1,7 @@
-﻿using Arkanoid_HungryMouse.GameEntities.Models;
-
-namespace Arkanoid_HungryMouse.GameEntities.Enums
+﻿namespace Arkanoid_HungryMouse.Enums
 {
     /// <summary>
-    /// Варианты <see cref="Box"/>
+    /// Варианты коробок
     /// </summary>
     public enum BoxTypes
     {

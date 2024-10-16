@@ -1,4 +1,4 @@
-﻿namespace Arkanoid_HungryMouse
+﻿namespace Arkanoid_HungryMouse.Forms
 {
     partial class MainGameForm
     {
@@ -60,7 +60,7 @@
             // InfoButton
             // 
             this.InfoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.InfoButton.Image = global::Arkanoid_HungryMouse.Properties.Resources.help;
+            this.InfoButton.Image = global::Arkanoid_HungryMouse.Forms.Properties.Resources.help;
             this.InfoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.InfoButton.Name = "InfoButton";
             this.InfoButton.Size = new System.Drawing.Size(23, 22);

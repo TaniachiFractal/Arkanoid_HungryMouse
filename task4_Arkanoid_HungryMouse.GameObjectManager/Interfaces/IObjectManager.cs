@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using Arkanoid_HungryMouse.GameEntities.Enums;
-using Arkanoid_HungryMouse.GameEntities.Interfaces;
+using Arkanoid_HungryMouse.Enums;
+using Arkanoid_HungryMouse.GameEntities.AbstractClasses;
 using Arkanoid_HungryMouse.GameEntities.Models;
-using task4_Arkanoid_HungryMouse.Storage.Interfaces;
 
-namespace task4_Arkanoid_HungryMouse.GameObjectManager.Interfaces
+namespace Arkanoid_HungryMouse.ObjectManager.Interfaces
 {
     /// <summary>
-    /// Прослойка между <see cref="IGameObjectStorage"/> и представлением
+    /// Прослойка между хранилищем и представлением
     /// </summary>
     public interface IObjectManager
     {
@@ -30,29 +29,34 @@ namespace task4_Arkanoid_HungryMouse.GameObjectManager.Interfaces
         List<Box> GetBoxes();
 
         /// <summary>
-        /// <inheritdoc cref="IGameObjectStorage.ChangeObjectData(IGameObject, Action{IGameObject})"/>
+        /// Изменить данные объекта
         /// </summary>
-        void ChangeObjectData(IGameObject gameObject, Action<IGameObject> action = null);
+        void ChangeObjectData(GameObject gameObject, Action<GameObject> action = null);
 
         /// <summary>
-        /// <inheritdoc cref="IGameObjectStorage.GetRelativeLocation(IGameObject, IGameObject)"/>
+        /// <inheritdoc cref="IGameObjectStorage.GetRelativeLocation(GameObject, GameObject)"/>
         /// </summary>
-        RelativeLocation GetRelativeLocation(IGameObject relativeTo, IGameObject gameObject);
-
-        /// <summary>
-        /// Сдвинуть объект в направлении
-        /// </summary>
-        void Move(IGameObject gameObject, Direction direction);
+        RelativeLocation GetRelativeLocation(GameObject relativeTo, GameObject gameObject);
 
         /// <summary>
         /// Установить объекту статус "Разрушен"
         /// </summary>
-        void SetDestroyed(IGameObject gameObject);
+        void SetDestroyed(GameObject gameObject);
 
         /// <summary>
         /// Обновить все объекты: Проверить пересечения, уничтожить то, что надо; Сдвинуть <see cref="Mouse"/> и <see cref="PlayerTable"/>
         /// </summary>
         /// <returns>Состояние игры после обновления</returns>
         GameState UpdateAll(Direction tableDirection);
+
+        /// <summary>
+        /// Получить количество разрушенных коробок
+        /// </summary>
+        int GetDestroyedCount();
+
+        /// <summary>
+        /// Указать размер поля и по этим данным разместить другие объекты
+        /// </summary>
+        void SetSizesAndLocations(int width, int height);
     }
 }

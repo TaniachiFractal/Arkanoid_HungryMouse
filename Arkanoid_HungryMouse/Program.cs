@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using System.Windows.Forms;
-using task4_Arkanoid_HungryMouse.GameObjectManager.Manager;
-using task4_Arkanoid_HungryMouse.Storage.Storage;
+using Arkanoid_HungryMouse.Forms;
+using Arkanoid_HungryMouse.ObjectManager;
+using Arkanoid_HungryMouse.Storage;
 
 namespace Arkanoid_HungryMouse
 {

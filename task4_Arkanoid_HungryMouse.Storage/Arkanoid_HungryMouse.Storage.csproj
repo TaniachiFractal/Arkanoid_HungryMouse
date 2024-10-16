@@ -52,7 +52,7 @@
     <Compile Include="Classes\Const.cs" />
     <Compile Include="Interfaces\IGameObjectStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Storage\GameObjectStorage.cs" />
+    <Compile Include="GameObjectStorage.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -76,6 +76,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Arkanoid_HungryMouse.Enums\Arkanoid_HungryMouse.Enums.csproj">
+      <Project>{E44B68EE-114B-4AFE-B35B-DD5E52C15A2A}</Project>
+      <Name>Arkanoid_HungryMouse.Enums</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Arkanoid_HungryMouse.GameEntities\Arkanoid_HungryMouse.GameEntities.csproj">
       <Project>{5FD936FE-41AF-4367-B012-76718B136BFE}</Project>
       <Name>Arkanoid_HungryMouse.GameEntities</Name>

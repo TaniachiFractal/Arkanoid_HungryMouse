@@ -1,16 +1,12 @@
-﻿using Arkanoid_HungryMouse.GameEntities.Interfaces;
+﻿using Arkanoid_HungryMouse.GameEntities.AbstractClasses;
 
 namespace Arkanoid_HungryMouse.GameEntities.Models
 {
     /// <summary>
-    /// <see cref="IGameObject"/> игрока - столика, от которого прыгает <see cref="Mouse"/>
+    /// <see cref="GameObject"/> игрока - столика, от которого прыгает <see cref="Mouse"/>
     /// </summary>
-    public class PlayerTable : IGameObject
+    public class PlayerTable : GameObject
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int Width { get; set; }
-        public int Height { get; set; }
-        public bool Destroyed { get; set; }
+
     }
 }

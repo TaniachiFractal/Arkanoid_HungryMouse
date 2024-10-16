@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Arkanoid_HungryMouse.GameEntities.Enums;
-using Arkanoid_HungryMouse.GameEntities.Interfaces;
+using Arkanoid_HungryMouse.Enums;
+using Arkanoid_HungryMouse.GameEntities.AbstractClasses;
 using Arkanoid_HungryMouse.GameEntities.Models;
-using task4_Arkanoid_HungryMouse.Storage.Classes;
-using task4_Arkanoid_HungryMouse.Storage.Interfaces;
+using Arkanoid_HungryMouse.Storage.Classes;
+using Arkanoid_HungryMouse.Storage.Interfaces;
 
-namespace task4_Arkanoid_HungryMouse.Storage.Storage
+namespace Arkanoid_HungryMouse.Storage
 {
     /// <summary>
     /// <inheritdoc cref="IGameObjectStorage"/>
@@ -16,17 +16,17 @@ namespace task4_Arkanoid_HungryMouse.Storage.Storage
         #region fields
 
         /// <summary>
-        /// <inheritdoc cref="Arkanoid_HungryMouse.GameEntities.Models.Mouse"/>
+        /// <inheritdoc cref="GameEntities.Models.Mouse"/>
         /// </summary>
         public Mouse Mouse { get; }
 
         /// <summary>
-        /// <inheritdoc cref="Arkanoid_HungryMouse.GameEntities.Models.PlayerTable"/>
+        /// <inheritdoc cref="GameEntities.Models.PlayerTable"/>
         /// </summary>
         public PlayerTable PlayerTable { get; }
 
         /// <summary>
-        /// <inheritdoc cref="Arkanoid_HungryMouse.GameEntities.Models.Field"/>
+        /// <inheritdoc cref="GameEntities.Models.Field"/>
         /// </summary>
         public Field Field { get; }
 
@@ -98,12 +98,12 @@ namespace task4_Arkanoid_HungryMouse.Storage.Storage
             }
         }
 
-        public void ChangeObjectData(IGameObject gameObject, Action<IGameObject> action = null)
+        public void ChangeObjectData(GameObject gameObject, Action<GameObject> action = null)
         {
             action?.Invoke(gameObject);
         }
 
-        public RelativeLocation GetRelativeLocation(IGameObject relativeTo, IGameObject gameObject)
+        public RelativeLocation GetRelativeLocation(GameObject relativeTo, GameObject gameObject)
         {
             if (gameObject.X + gameObject.Width < relativeTo.X)
             {
@@ -123,28 +123,7 @@ namespace task4_Arkanoid_HungryMouse.Storage.Storage
             }
             else
             {
-                if (relativeTo.GetType() == typeof(Field))
-                {
-                    if (gameObject.X < 0)
-                    {
-                        return RelativeLocation.AtTheLeft;
-                    }
-                    if (gameObject.Y < 0)
-                    {
-                        return RelativeLocation.AtTheTop;
-                    }
-                    if (gameObject.X + gameObject.Width > relativeTo.Width)
-                    {
-                        return RelativeLocation.AtTheRight;
-                    }
-                    if (gameObject.Y + gameObject.Height > relativeTo.Height)
-                    {
-                        return RelativeLocation.AtTheBottom;
-                    }
-                    return RelativeLocation.Intersect;
-                }
-                else
-                { return RelativeLocation.Intersect; }
+                return RelativeLocation.Intersect;
             }
 
         }

@@ -49,13 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\BoxTypes.cs" />
-    <Compile Include="Enums\Direction.cs" />
-    <Compile Include="Enums\GameState.cs" />
-    <Compile Include="Interfaces\IGameObject.cs" />
+    <Compile Include="AbstractClasses\GameObject.cs" />
     <Compile Include="Models\Box.cs" />
     <Compile Include="Models\Field.cs" />
-    <Compile Include="Enums\RelativeLocation.cs" />
     <Compile Include="Models\Mouse.cs" />
     <Compile Include="Models\PlayerTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +76,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Arkanoid_HungryMouse.Enums\Arkanoid_HungryMouse.Enums.csproj">
+      <Project>{e44b68ee-114b-4afe-b35b-dd5e52c15a2a}</Project>
+      <Name>Arkanoid_HungryMouse.Enums</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

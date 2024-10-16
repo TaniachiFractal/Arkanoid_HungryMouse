@@ -1,16 +1,12 @@
-﻿using Arkanoid_HungryMouse.GameEntities.Interfaces;
+﻿using Arkanoid_HungryMouse.GameEntities.AbstractClasses;
 
 namespace Arkanoid_HungryMouse.GameEntities.Models
 {
     /// <summary>
-    /// Игровое поле <see cref="IGameObject"/>
+    /// Игровое поле <see cref="GameObject"/>
     /// </summary>
-    public class Field : IGameObject
+    public class Field : GameObject
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int Width { get; set; }
-        public int Height { get; set; }
-        public bool Destroyed { get; set; }
+
     }
 }

@@ -1,19 +1,13 @@
-﻿using Arkanoid_HungryMouse.GameEntities.Enums;
-using Arkanoid_HungryMouse.GameEntities.Interfaces;
+﻿using Arkanoid_HungryMouse.Enums;
+using Arkanoid_HungryMouse.GameEntities.AbstractClasses;
 
 namespace Arkanoid_HungryMouse.GameEntities.Models
 {
     /// <summary>
-    /// <see cref="IGameObject"/> мыши, который прыгает по экрану 
+    /// <see cref="GameObject"/> мыши, который прыгает по экрану 
     /// </summary>
-    public class Mouse : IGameObject
+    public class Mouse : GameObject
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int Width { get; set; }
-        public int Height { get; set; }
-        public bool Destroyed { get; set; }
-
         /// <summary>
         /// Скорость мыши по горизонтали
         /// </summary>
