@@ -12,5 +12,10 @@ namespace Arkanoid_HungryMouse.GameEntities.Models
         /// Тип коробки (какой она будет рисоваться)
         /// </summary>
         public BoxTypes BoxType { get; set; }
+
+        /// <summary>
+        /// Разрушен ли объект
+        /// </summary>
+        public bool Destroyed { get; set; }
     }
 }

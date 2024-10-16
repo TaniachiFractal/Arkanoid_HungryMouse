@@ -1,4 +1,4 @@
-﻿namespace Arkanoid_HungryMouse.Storage.Classes
+﻿namespace Arkanoid_HungryMouse.Storage.Additions
 {
     /// <summary>
     /// Константы
@@ -13,6 +13,14 @@
         /// Начальная Y координата мыши
         /// </summary>
         public const int MouseStartY = 300;
+        /// <summary>
+        /// Базовая скорость мыши
+        /// </summary>
+        public const int MouseStep = 8;
+        /// <summary>
+        /// Коэффицент умножения вычисляемой скорости мыши
+        /// </summary>
+        public const double SpeedMultiplier = 0.2;
 
         /// <summary>
         /// Начальная X координата столика
@@ -22,11 +30,10 @@
         /// Начальная Y координата столика
         /// </summary>
         public const int TableStartY = 700;
-
         /// <summary>
-        /// Шаг сдвига объектов при анимации
+        /// Скорость столика
         /// </summary>
-        public const int Step = 10;
+        public const int TableStep = 15;
 
         /// <summary>
         /// Высота поля
@@ -51,13 +58,22 @@
         public const int BoxListRows = 7;
 
         /// <summary>
-        /// Размер длинного объекта
+        /// Размер объекта, самый длинный - 1 часть
         /// </summary>
-        public const int LongDimen = 128;
+        public const int FullPartDimen = 128;
         /// <summary>
-        /// Размер короткого объекта
+        /// Размер объекта, более короткий - 1/2 часть
         /// </summary>
-        public const int ShortDimen = 64;
+        public const int HalfPartDimen = 64;
+        /// <summary>
+        /// Размер еще более короткого объекта - 1/4 часть
+        /// </summary>
+        public const int QuarterPartDimen = 32;
+
+        /// <summary>
+        /// Начальное количество жизней
+        /// </summary>
+        public const int StartLifesCount = 3;
 
     }
 }

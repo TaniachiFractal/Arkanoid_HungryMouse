@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Arkanoid_HungryMouse.Enums;
-using Arkanoid_HungryMouse.GameEntities.AbstractClasses;
 using Arkanoid_HungryMouse.GameEntities.Models;
-using Arkanoid_HungryMouse.Storage.Classes;
+using Arkanoid_HungryMouse.Storage.Additions;
 using Arkanoid_HungryMouse.Storage.Interfaces;
 
 namespace Arkanoid_HungryMouse.Storage
@@ -13,55 +12,97 @@ namespace Arkanoid_HungryMouse.Storage
     /// </summary>
     public class GameObjectStorage : IGameObjectStorage
     {
+
         #region fields
 
         /// <summary>
         /// <inheritdoc cref="GameEntities.Models.Mouse"/>
         /// </summary>
-        public Mouse Mouse { get; }
+        private Mouse Mouse { get; }
 
         /// <summary>
         /// <inheritdoc cref="GameEntities.Models.PlayerTable"/>
         /// </summary>
-        public PlayerTable PlayerTable { get; }
+        private PlayerTable PlayerTable { get; }
 
         /// <summary>
         /// <inheritdoc cref="GameEntities.Models.Field"/>
         /// </summary>
-        public Field Field { get; }
+        private Field Field { get; }
 
         /// <summary>
         /// Лист всех <see cref="Boxes"/>
         /// </summary>
-        public List<Box> Boxes { get; }
+        private List<Box> Boxes { get; }
+
+        /// <summary>
+        /// Количество жизней
+        /// </summary>
+        private int LifesCount { get; set; }
 
         #endregion
+
+        #region get fields
+
+        public List<Box> GetBoxes()
+        {
+            return Boxes;
+        }
+
+        public Field GetField()
+        {
+            return Field;
+        }
+
+        public Mouse GetMouse()
+        {
+            return Mouse;
+        }
+
+        public PlayerTable GetPlayerTable()
+        {
+            return PlayerTable;
+        }
+
+        public int GetLifesCount()
+        {
+            return LifesCount;
+        }
+
+        #endregion
+
+        public void DecreaseLifeCount()
+        {
+            LifesCount--;
+        }
 
         /// <summary>
         /// Конструктор: Инициализация полей
         /// </summary>
         public GameObjectStorage()
         {
+            LifesCount = Const.StartLifesCount;
+
             Boxes = new List<Box>();
 
             Mouse = new Mouse
             {
                 X = Const.MouseStartX,
                 Y = Const.MouseStartY,
-                Height = Const.ShortDimen,
-                Width = Const.ShortDimen,
-                Destroyed = false,
+                Height = Const.HalfPartDimen,
+                Width = Const.HalfPartDimen,
                 VerticalDirection = Direction.Up,
-                SpeedX = -Const.Step,
+                SpeedX = -Const.MouseStep,
+                Step = Const.MouseStep,
             };
 
             PlayerTable = new PlayerTable
             {
                 X = Const.TableStartX,
                 Y = Const.TableStartY,
-                Height = Const.ShortDimen,
-                Width = Const.LongDimen,
-                Destroyed = false,
+                Height = Const.QuarterPartDimen,
+                Width = Const.FullPartDimen,
+                Step = Const.TableStep,
             };
 
             Field = new Field
@@ -70,7 +111,6 @@ namespace Arkanoid_HungryMouse.Storage
                 Y = 0,
                 Height = Const.FieldHeight,
                 Width = Const.FieldWidth,
-                Destroyed = false,
             };
 
             GenerateBoxes();
@@ -86,10 +126,10 @@ namespace Arkanoid_HungryMouse.Storage
                 {
                     var box = new Box
                     {
-                        X = (Const.BoxesMargin * 2) + (Const.BoxesMargin * (col + 1)) + (col * Const.LongDimen),
-                        Y = (Const.BoxesMargin * 2) + (Const.BoxesMargin * (row + 1)) + (row * Const.ShortDimen),
-                        Height = Const.ShortDimen,
-                        Width = Const.LongDimen,
+                        X = (Const.BoxesMargin * 2) + (Const.BoxesMargin * (col + 1)) + (col * Const.FullPartDimen),
+                        Y = (Const.BoxesMargin * 2) + (Const.BoxesMargin * (row + 1)) + (row * Const.HalfPartDimen),
+                        Height = Const.HalfPartDimen,
+                        Width = Const.FullPartDimen,
                         Destroyed = false,
                         BoxType = BoxTypes[rnd.Next(BoxTypes.Length)],
                     };
@@ -98,34 +138,5 @@ namespace Arkanoid_HungryMouse.Storage
             }
         }
 
-        public void ChangeObjectData(GameObject gameObject, Action<GameObject> action = null)
-        {
-            action?.Invoke(gameObject);
-        }
-
-        public RelativeLocation GetRelativeLocation(GameObject relativeTo, GameObject gameObject)
-        {
-            if (gameObject.X + gameObject.Width < relativeTo.X)
-            {
-                return RelativeLocation.AtTheLeft;
-            }
-            if (gameObject.X > relativeTo.X + relativeTo.Width)
-            {
-                return RelativeLocation.AtTheRight;
-            }
-            if (gameObject.Y + gameObject.Height < relativeTo.Y)
-            {
-                return RelativeLocation.AtTheTop;
-            }
-            if (gameObject.Y + gameObject.Height > relativeTo.Y + relativeTo.Height)
-            {
-                return RelativeLocation.AtTheBottom;
-            }
-            else
-            {
-                return RelativeLocation.Intersect;
-            }
-
-        }
     }
 }

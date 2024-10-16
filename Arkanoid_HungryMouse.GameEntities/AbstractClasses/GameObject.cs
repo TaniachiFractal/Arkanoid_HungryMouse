@@ -9,6 +9,7 @@ namespace Arkanoid_HungryMouse.GameEntities.AbstractClasses
     /// </summary>
     public abstract class GameObject
     {
+
         /// <summary>
         /// Координата по ширине
         /// </summary>
@@ -30,9 +31,9 @@ namespace Arkanoid_HungryMouse.GameEntities.AbstractClasses
         public int Height { get; set; }
 
         /// <summary>
-        /// Разрушен ли объект
+        /// Базовая скорость 
         /// </summary>
-        public bool Destroyed { get; set; }
+        public int Step { get; set; }
 
         public void ChangeObjectData(GameObject gameObject, Action<GameObject> action = null)
         {

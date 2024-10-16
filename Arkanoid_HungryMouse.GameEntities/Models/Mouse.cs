@@ -11,11 +11,12 @@ namespace Arkanoid_HungryMouse.GameEntities.Models
         /// <summary>
         /// Скорость мыши по горизонтали
         /// </summary>
-        public int SpeedX { get; set; }
+        public double SpeedX { get; set; }
 
         /// <summary>
         /// Направление мыши по вертикали
         /// </summary>
         public Direction VerticalDirection { get; set; }
+
     }
 }

@@ -33,7 +33,11 @@ namespace Arkanoid_HungryMouse.Forms
             };
             animTimer.Tick += AnimationTimer_Tick;
             animTimer.Start();
+            animTimer.Enabled = false;
+            UpdateOutput();
         }
+
+        #region key down methods
 
         private void MainGameForm_KeyUp(object sender, KeyEventArgs e)
         {
@@ -46,25 +50,56 @@ namespace Arkanoid_HungryMouse.Forms
             {
                 case Keys.Left:
                     {
-                        tableDirection = Direction.Left;
+                        LeftKeyDown();
                         break;
                     }
                 case Keys.Right:
                     {
-                        tableDirection = Direction.Right;
+                        RightKeyDown();
+                        break;
+                    }
+                case Keys.Enter:
+                    {
+                        EnterKeyDown();
                         break;
                     }
             }
         }
 
+        private void LeftKeyDown()
+        {
+
+            tableDirection = Direction.Left;
+        }
+
+        private void RightKeyDown()
+        {
+
+            tableDirection = Direction.Right;
+        }
+
+        private void EnterKeyDown()
+        {
+            TogglePaused();
+        }
+
+        #endregion
+
+        private void TogglePaused()
+        {
+            animTimer.Enabled = !animTimer.Enabled;
+            LabelHowToStart.Visible = !LabelHowToStart.Visible;
+        }
+
         private void AnimationTimer_Tick(object sender, System.EventArgs e)
         {
             var gameState = mgr.UpdateAll(tableDirection);
+
+            UpdateOutput();
             switch (gameState)
             {
                 case GameState.Won:
                     {
-                        UpdateOutput();
                         animTimer.Stop();
                         animTimer.Enabled = false;
                         MessageBox.Show("Победа!", "Победа!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -73,15 +108,22 @@ namespace Arkanoid_HungryMouse.Forms
                     }
                 case GameState.Lost:
                     {
-                        UpdateOutput();
-                        animTimer.Stop();
-                        animTimer.Enabled = false;
-                        MessageBox.Show("Поражение!", "Поражение!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        Application.Exit();
+                        if (mgr.GetLifesCount() > 0)
+                        {
+                            TogglePaused();
+                            InitObjectData();
+                            mgr.DecreaseLifeCount();
+                        }
+                        else
+                        {
+                            animTimer.Stop();
+                            animTimer.Enabled = false;
+                            MessageBox.Show("Поражение!", "Поражение!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            Application.Exit();
+                        }
                         break;
                     }
             }
-            UpdateOutput();
         }
 
         private void InitObjectData()
@@ -89,25 +131,44 @@ namespace Arkanoid_HungryMouse.Forms
             mgr.SetSizesAndLocations(GameField.Width, GameField.Height);
         }
 
-        private void Draw()
+        private void RenderMainGameplay()
         {
+            var mouse = mgr.GetMouse();
+            var table = mgr.GetPlayerTable();
+
             var newImage = new Bitmap(GameField.Width, GameField.Height);
             var newGraphics = Graphics.FromImage(newImage);
-            newGraphics.DrawImage(Forms.Properties.Resources.gradientBG, 0, 0);
-            newGraphics.DrawImage(Forms.Properties.Resources.mouse, mgr.GetMouse().X, mgr.GetMouse().Y);
-            newGraphics.DrawImage(Forms.Properties.Resources.table, mgr.GetPlayerTable().X, mgr.GetPlayerTable().Y);
+            newGraphics.DrawImage(Properties.Resources.gradientBG, 0, 0);
+            newGraphics.DrawImage(Properties.Resources.table, new Rectangle(table.X, table.Y, table.Width, table.Height));
             foreach (var box in mgr.GetBoxes())
             {
                 if (!box.Destroyed)
-                { newGraphics.DrawImage(GetBoxImage(box.BoxType), box.X, box.Y); }
+                { newGraphics.DrawImage(GetBoxImage(box.BoxType), new Rectangle(box.X, box.Y, box.Width, box.Height)); }
             }
+            newGraphics.DrawImage(Properties.Resources.mouse, new Rectangle(mouse.X, mouse.Y, mouse.Width, mouse.Height));
             canvas.DrawImage(newImage, 0, 0);
+        }
+
+        private void RenderToolStripOutput()
+        {
+            InfoStrip.Items.Clear();
+
+            InfoStrip.Items.Add($"Счёт: {mgr.GetDestroyedCount()}  Жизни: ");
+
+            for (var i = 0; i < mgr.GetLifesCount(); i++)
+            {
+                var newMouseLifeImage = new ToolStripButton
+                {
+                    Image = Properties.Resources.mouse
+                };
+                InfoStrip.Items.Add(newMouseLifeImage);
+            }
         }
 
         private void UpdateOutput()
         {
-            Draw();
-            InfoLabel.Text = $"Счёт: {mgr.GetDestroyedCount()}";
+            RenderMainGameplay();
+            RenderToolStripOutput();
         }
 
         private Bitmap GetBoxImage(BoxTypes boxType)
@@ -115,25 +176,24 @@ namespace Arkanoid_HungryMouse.Forms
             switch (boxType)
             {
                 case BoxTypes.Apples:
-                    return Forms.Properties.Resources.apples;
+                    return Properties.Resources.apples;
                 case BoxTypes.Bread:
-                    return Forms.Properties.Resources.bread;
+                    return Properties.Resources.bread;
                 case BoxTypes.Eggs:
-                    return Forms.Properties.Resources.eggs;
+                    return Properties.Resources.eggs;
                 case BoxTypes.Nuts:
-                    return Forms.Properties.Resources.nuts;
+                    return Properties.Resources.nuts;
                 case BoxTypes.Peaches:
-                    return Forms.Properties.Resources.peaches;
+                    return Properties.Resources.peaches;
                 case BoxTypes.Pumpkins:
-                    return Forms.Properties.Resources.pumpkins;
+                    return Properties.Resources.pumpkins;
                 case BoxTypes.Sausage:
-                    return Forms.Properties.Resources.sausage;
+                    return Properties.Resources.sausage;
                 case BoxTypes.Wheat:
-                    return Forms.Properties.Resources.wheat;
+                    return Properties.Resources.wheat;
                 default:
-                    return Forms.Properties.Resources.wheat;
+                    return Properties.Resources.wheat;
             }
         }
-
     }
 }

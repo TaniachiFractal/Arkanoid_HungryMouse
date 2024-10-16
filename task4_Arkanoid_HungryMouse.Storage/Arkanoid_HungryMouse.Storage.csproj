@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Const.cs" />
+    <Compile Include="Additions\Const.cs" />
     <Compile Include="Interfaces\IGameObjectStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GameObjectStorage.cs" />
