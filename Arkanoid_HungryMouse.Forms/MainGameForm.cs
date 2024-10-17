@@ -14,9 +14,10 @@ namespace Arkanoid_HungryMouse.Forms
         private readonly Graphics canvas;
         private Direction tableDirection;
         private readonly Timer animTimer;
+        private bool playing;
 
         /// <summary>
-        /// Конструктор: указать прослойку
+        /// Конструктор
         /// </summary>
         public MainGameForm(IObjectManager objectManager)
         {
@@ -29,11 +30,13 @@ namespace Arkanoid_HungryMouse.Forms
 
             animTimer = new Timer
             {
-                Interval = 30
+                Interval = 10
             };
             animTimer.Tick += AnimationTimer_Tick;
             animTimer.Start();
             animTimer.Enabled = false;
+            playing = false;
+
             UpdateOutput();
         }
 
@@ -41,7 +44,19 @@ namespace Arkanoid_HungryMouse.Forms
 
         private void MainGameForm_KeyUp(object sender, KeyEventArgs e)
         {
-            tableDirection = Direction.Stay;
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                    {
+                        LeftKeyUp();
+                        break;
+                    }
+                case Keys.Right:
+                    {
+                        RightKeyUp();
+                        break;
+                    }
+            }
         }
 
         private void MainGameForm_KeyDown(object sender, KeyEventArgs e)
@@ -63,68 +78,102 @@ namespace Arkanoid_HungryMouse.Forms
                         EnterKeyDown();
                         break;
                     }
+                case Keys.F1:
+                    {
+                        F1KeyDown();
+                        break;
+                    }
             }
         }
 
+        #region left
         private void LeftKeyDown()
         {
 
             tableDirection = Direction.Left;
         }
+        private void LeftKeyUp()
+        {
+            tableDirection = Direction.Stay;
+        }
+        #endregion
 
+        #region right
         private void RightKeyDown()
         {
 
             tableDirection = Direction.Right;
         }
+        private void RightKeyUp()
+        {
+            tableDirection = Direction.Stay;
+        }
+        #endregion
 
         private void EnterKeyDown()
         {
-            TogglePaused();
+            TogglePlaying();
+        }
+
+        private void F1KeyDown()
+        {
+            playing = false;
+            UpdatePlaying();
+            new InfoForm().ShowDialog();
         }
 
         #endregion
 
-        private void TogglePaused()
+        private void TogglePlaying()
         {
-            animTimer.Enabled = !animTimer.Enabled;
-            LabelHowToStart.Visible = !LabelHowToStart.Visible;
+            playing = !playing;
+            UpdatePlaying();
+        }
+
+        private void UpdatePlaying()
+        {
+            animTimer.Enabled = playing;
+            InfoLabel.Visible = !playing;
         }
 
         private void AnimationTimer_Tick(object sender, System.EventArgs e)
         {
             var gameState = mgr.UpdateAll(tableDirection);
-
-            UpdateOutput();
             switch (gameState)
             {
                 case GameState.Won:
                     {
+                        UpdateOutput();
                         animTimer.Stop();
                         animTimer.Enabled = false;
-                        MessageBox.Show("Победа!", "Победа!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        new YouWonForm().ShowDialog();
                         Application.Exit();
                         break;
                     }
                 case GameState.Lost:
                     {
+                        System.Threading.Thread.Sleep(500);
                         if (mgr.GetLifesCount() > 0)
                         {
-                            TogglePaused();
+                            TogglePlaying();
                             InitObjectData();
                             mgr.DecreaseLifeCount();
                         }
                         else
                         {
+                            UpdateOutput();
                             animTimer.Stop();
                             animTimer.Enabled = false;
-                            MessageBox.Show("Поражение!", "Поражение!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            new YouLostForm().ShowDialog();
                             Application.Exit();
                         }
                         break;
                     }
             }
+            UpdateOutput();
         }
+
+        #region render
 
         private void InitObjectData()
         {
@@ -195,5 +244,7 @@ namespace Arkanoid_HungryMouse.Forms
                     return Properties.Resources.wheat;
             }
         }
+
+        #endregion
     }
 }

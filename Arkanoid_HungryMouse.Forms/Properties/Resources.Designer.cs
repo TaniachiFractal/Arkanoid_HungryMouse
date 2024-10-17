@@ -113,6 +113,16 @@ namespace Arkanoid_HungryMouse.Forms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap lost {
+            get {
+                object obj = ResourceManager.GetObject("lost", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mouse {
             get {
                 object obj = ResourceManager.GetObject("mouse", resourceCulture);
@@ -176,6 +186,16 @@ namespace Arkanoid_HungryMouse.Forms.Properties {
         internal static System.Drawing.Bitmap wheat {
             get {
                 object obj = ResourceManager.GetObject("wheat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap won {
+            get {
+                object obj = ResourceManager.GetObject("won", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

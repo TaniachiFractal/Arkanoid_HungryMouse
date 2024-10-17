@@ -48,14 +48,6 @@
         /// Расстояние между коробками в списке
         /// </summary>
         public const int BoxesMargin = 10;
-        /// <summary>
-        /// Количество колонок в списке коробок
-        /// </summary>
-        public const int BoxListCols = 5;
-        /// <summary>
-        /// Количество строк в списке коробок
-        /// </summary>
-        public const int BoxListRows = 7;
 
         /// <summary>
         /// Размер объекта, самый длинный - 1 часть

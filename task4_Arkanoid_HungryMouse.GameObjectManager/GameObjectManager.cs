@@ -130,6 +130,7 @@ namespace Arkanoid_HungryMouse.ObjectManager
                                 break;
                             }
                     }
+                    break;
                 }
             } // Обработка коробок
 

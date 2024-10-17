@@ -118,11 +118,18 @@ namespace Arkanoid_HungryMouse.Storage
 
         private void GenerateBoxes()
         {
+            var WhatPartOfFieldIsCoveredWithBoxes = 0.6;
+
+            var field = GetField();
+
+            var colCount = (field.Width - Const.BoxesMargin) / (Const.FullPartDimen + Const.BoxesMargin);
+            var rowCount = field.Height * WhatPartOfFieldIsCoveredWithBoxes / (Const.HalfPartDimen + Const.BoxesMargin);
+
             var BoxTypes = (BoxTypes[])Enum.GetValues(typeof(BoxTypes));
             var rnd = new Random();
-            for (var row = 0; row < Const.BoxListRows; row++)
+            for (var row = 0; row < rowCount; row++)
             {
-                for (var col = 0; col < Const.BoxListCols; col++)
+                for (var col = 0; col < colCount; col++)
                 {
                     var box = new Box
                     {

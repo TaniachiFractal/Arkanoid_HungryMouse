@@ -117,12 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="InfoStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>122, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>29</value>
-  </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Мышка очень голодная! Помоги ей съесть все запасы на складе.
+
+Эта игра относится к жанру Арканоид. 
+При помощи клавиш-стрелок осуществляется управление ракетки-столика, от которого отскакивает мышь. 
+Если мышь касается коробки с запасами, мышь её съедает и отскакивает. Если коробок не осталось - Вы победили. Если мышь падает ниже пола, она теряет 1 жизнь. После траты 3-х жизней игра кончается.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
