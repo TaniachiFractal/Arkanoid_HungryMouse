@@ -10,6 +10,8 @@ namespace Arkanoid_HungryMouse.ObjectManager.Interfaces
     public interface IObjectManager
     {
 
+        #region get fields
+
         /// <summary>
         /// Получить объект <see cref="Mouse"/> из хранилища
         /// </summary>
@@ -29,6 +31,8 @@ namespace Arkanoid_HungryMouse.ObjectManager.Interfaces
         /// Получить список <see cref="Box"/> из хранилища
         /// </summary>
         List<Box> GetBoxes();
+
+        #endregion
 
         /// <summary>
         /// Обновить все объекты: Проверить пересечения, уничтожить то, что надо; Сдвинуть <see cref="Mouse"/> и <see cref="PlayerTable"/>

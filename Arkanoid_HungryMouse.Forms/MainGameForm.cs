@@ -40,7 +40,44 @@ namespace Arkanoid_HungryMouse.Forms
             UpdateOutput();
         }
 
-        #region key down methods
+        private void AnimationTimer_Tick(object sender, System.EventArgs e)
+        {
+            var gameState = mgr.UpdateAll(tableDirection);
+            switch (gameState)
+            {
+                case GameState.Won:
+                    {
+                        UpdateOutput();
+                        animTimer.Stop();
+                        animTimer.Enabled = false;
+                        new YouWonForm().ShowDialog();
+                        Application.Exit();
+                        break;
+                    }
+                case GameState.Lost:
+                    {
+                        System.Threading.Thread.Sleep(500);
+                        if (mgr.GetLifesCount() > 0)
+                        {
+                            TogglePlaying();
+                            InitObjectData();
+                            mgr.DecreaseLifeCount();
+                        }
+                        else
+                        {
+                            UpdateOutput();
+                            animTimer.Stop();
+                            animTimer.Enabled = false;
+                            new YouLostForm(mgr.GetDestroyedCount()).ShowDialog();
+                            Application.Exit();
+                        }
+                        break;
+                    }
+            }
+            UpdateOutput();
+        }
+
+        #region key down/up methods
 
         private void MainGameForm_KeyUp(object sender, KeyEventArgs e)
         {
@@ -89,31 +126,39 @@ namespace Arkanoid_HungryMouse.Forms
         #region left
         private void LeftKeyDown()
         {
-
             tableDirection = Direction.Left;
         }
+
         private void LeftKeyUp()
         {
             tableDirection = Direction.Stay;
         }
+
         #endregion
 
         #region right
         private void RightKeyDown()
         {
-
             tableDirection = Direction.Right;
         }
+
         private void RightKeyUp()
         {
             tableDirection = Direction.Stay;
         }
+
         #endregion
+
+        #region enter
 
         private void EnterKeyDown()
         {
             TogglePlaying();
         }
+
+        #endregion
+
+        #region f1
 
         private void F1KeyDown()
         {
@@ -121,6 +166,8 @@ namespace Arkanoid_HungryMouse.Forms
             UpdatePlaying();
             new InfoForm().ShowDialog();
         }
+
+        #endregion
 
         #endregion
 
@@ -134,43 +181,6 @@ namespace Arkanoid_HungryMouse.Forms
         {
             animTimer.Enabled = playing;
             InfoLabel.Visible = !playing;
-        }
-
-        private void AnimationTimer_Tick(object sender, System.EventArgs e)
-        {
-            var gameState = mgr.UpdateAll(tableDirection);
-            switch (gameState)
-            {
-                case GameState.Won:
-                    {
-                        UpdateOutput();
-                        animTimer.Stop();
-                        animTimer.Enabled = false;
-                        new YouWonForm().ShowDialog();
-                        Application.Exit();
-                        break;
-                    }
-                case GameState.Lost:
-                    {
-                        System.Threading.Thread.Sleep(500);
-                        if (mgr.GetLifesCount() > 0)
-                        {
-                            TogglePlaying();
-                            InitObjectData();
-                            mgr.DecreaseLifeCount();
-                        }
-                        else
-                        {
-                            UpdateOutput();
-                            animTimer.Stop();
-                            animTimer.Enabled = false;
-                            new YouLostForm(mgr.GetDestroyedCount()).ShowDialog();
-                            Application.Exit();
-                        }
-                        break;
-                    }
-            }
-            UpdateOutput();
         }
 
         #region render

@@ -15,16 +15,14 @@ namespace Arkanoid_HungryMouse.Storage
 
         /// <inheritdoc cref="GameEntities.Models.Mouse"/>
         private Mouse Mouse { get; }
-
         /// <inheritdoc cref="GameEntities.Models.PlayerTable"/>
         private PlayerTable PlayerTable { get; }
-
         /// <inheritdoc cref="GameEntities.Models.Field"/>
         private Field Field { get; }
-
-        /// Лист всех <see cref="Boxes"/>
+        /// <summary>
+        /// Лист всех <see cref="Box"/>
+        /// </summary>
         private List<Box> Boxes { get; }
-
         /// <summary>
         /// Количество жизней
         /// </summary>

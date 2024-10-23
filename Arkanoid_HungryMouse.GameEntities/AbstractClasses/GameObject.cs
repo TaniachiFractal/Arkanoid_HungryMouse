@@ -1,8 +1,4 @@
-﻿using System;
-using Arkanoid_HungryMouse.Enums;
-using Arkanoid_HungryMouse.GameEntities.Models;
-
-namespace Arkanoid_HungryMouse.GameEntities.AbstractClasses
+﻿namespace Arkanoid_HungryMouse.GameEntities.AbstractClasses
 {
     /// <summary>
     /// Игровой объект
