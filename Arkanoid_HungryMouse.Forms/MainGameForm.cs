@@ -164,7 +164,7 @@ namespace Arkanoid_HungryMouse.Forms
                             UpdateOutput();
                             animTimer.Stop();
                             animTimer.Enabled = false;
-                            new YouLostForm().ShowDialog();
+                            new YouLostForm(mgr.GetDestroyedCount()).ShowDialog();
                             Application.Exit();
                         }
                         break;

@@ -35,55 +35,5 @@ namespace Arkanoid_HungryMouse.GameEntities.AbstractClasses
         /// </summary>
         public int Step { get; set; }
 
-        public void ChangeObjectData(GameObject gameObject, Action<GameObject> action = null)
-        {
-            action?.Invoke(gameObject);
-        }
-
-        public RelativeLocation GetRelativeLocation(GameObject relativeTo, GameObject gameObject)
-        {
-            if (gameObject.X + gameObject.Width < relativeTo.X)
-            {
-                return RelativeLocation.AtTheLeft;
-            }
-            if (gameObject.X > relativeTo.X + relativeTo.Width)
-            {
-                return RelativeLocation.AtTheRight;
-            }
-            if (gameObject.Y + gameObject.Height < relativeTo.Y)
-            {
-                return RelativeLocation.AtTheTop;
-            }
-            if (gameObject.Y + gameObject.Height > relativeTo.Y + relativeTo.Height)
-            {
-                return RelativeLocation.AtTheBottom;
-            }
-            else
-            {
-                if (relativeTo.GetType() == typeof(Field))
-                {
-                    if (gameObject.X < 0)
-                    {
-                        return RelativeLocation.AtTheLeft;
-                    }
-                    if (gameObject.Y < 0)
-                    {
-                        return RelativeLocation.AtTheTop;
-                    }
-                    if (gameObject.X + gameObject.Width > relativeTo.Width)
-                    {
-                        return RelativeLocation.AtTheRight;
-                    }
-                    if (gameObject.Y + gameObject.Height > relativeTo.Height)
-                    {
-                        return RelativeLocation.AtTheBottom;
-                    }
-                    return RelativeLocation.Intersect;
-                }
-                else
-                { return RelativeLocation.Intersect; }
-            }
-
-        }
     }
 }

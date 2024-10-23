@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YouLostForm));
             this.label1 = new System.Windows.Forms.Label();
+            this.ScoreLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -44,6 +45,18 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Поражение!";
             // 
+            // ScoreLabel
+            // 
+            this.ScoreLabel.AutoSize = true;
+            this.ScoreLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ScoreLabel.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ScoreLabel.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.ScoreLabel.Location = new System.Drawing.Point(450, 78);
+            this.ScoreLabel.Name = "ScoreLabel";
+            this.ScoreLabel.Size = new System.Drawing.Size(107, 38);
+            this.ScoreLabel.TabIndex = 1;
+            this.ScoreLabel.Text = "Счёт: 0";
+            // 
             // YouLostForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 29F);
@@ -51,6 +64,7 @@
             this.BackgroundImage = global::Arkanoid_HungryMouse.Forms.Properties.Resources.lost;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(587, 415);
+            this.Controls.Add(this.ScoreLabel);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -70,5 +84,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ScoreLabel;
     }
 }

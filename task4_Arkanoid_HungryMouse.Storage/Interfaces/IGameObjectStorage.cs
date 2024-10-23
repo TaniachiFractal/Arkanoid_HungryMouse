@@ -39,5 +39,6 @@ namespace Arkanoid_HungryMouse.Storage.Interfaces
         /// Уменьшить количество оставшихся жизней
         /// </summary>
         void DecreaseLifeCount();
+
     }
 }

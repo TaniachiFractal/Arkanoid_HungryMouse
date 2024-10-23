@@ -8,9 +8,7 @@ using Arkanoid_HungryMouse.Storage.Interfaces;
 
 namespace Arkanoid_HungryMouse.ObjectManager
 {
-    /// <summary>
     /// <inheritdoc cref="IObjectManager"/>
-    /// </summary>
     public class GameObjectManager : IObjectManager
     {
 
@@ -28,17 +26,24 @@ namespace Arkanoid_HungryMouse.ObjectManager
 
         #region get fields
 
+        /// <inheritdoc/>
         public List<Box> GetBoxes() => objectStorage.GetBoxes();
 
+        /// <inheritdoc/>
         public Field GetField() => objectStorage.GetField();
 
+        /// <inheritdoc/>
         public Mouse GetMouse() => objectStorage.GetMouse();
 
+        /// <inheritdoc/>
         public PlayerTable GetPlayerTable() => objectStorage.GetPlayerTable();
+
+        /// <inheritdoc/>
         public int GetLifesCount() => objectStorage.GetLifesCount();
 
         #endregion
 
+        /// <inheritdoc/>
         public int GetDestroyedCount()
         {
             var destroyedCount = 0;
@@ -52,6 +57,7 @@ namespace Arkanoid_HungryMouse.ObjectManager
             return destroyedCount;
         }
 
+        /// <inheritdoc/>
         public void SetSizesAndLocations(int width, int height)
         {
             var mouse = GetMouse();
@@ -68,12 +74,12 @@ namespace Arkanoid_HungryMouse.ObjectManager
             mouse.Y = field.Height - (mouse.Height * 2);
         }
 
+        /// <inheritdoc/>
         public void DecreaseLifeCount() => objectStorage.DecreaseLifeCount();
 
         #endregion
 
-        #region game logic
-
+        /// <inheritdoc/>
         public GameState UpdateAll(Direction tableDirection)
         {
             var mouse = GetMouse();
@@ -97,6 +103,30 @@ namespace Arkanoid_HungryMouse.ObjectManager
                 Height = table.Height,
             };
 
+            UpdateBoxes(futureMouse, mouse);
+
+            if (!UpdateMouseAgainstField(futureMouse, mouse))
+            { return GameState.Lost; }
+
+            UpdateMouseAgainstTable(table, mouse);
+
+            UpdateTable(table, futureTable, tableDirection);
+
+            Move(mouse, mouse.VerticalDirection);
+            Move(mouse);
+
+            if (GetDestroyedCount() == GetBoxes().Count)
+            {
+                return GameState.Won;
+            }
+
+            return GameState.Playing;
+        }
+
+        #region steps of update
+
+        private void UpdateBoxes(Mouse futureMouse, Mouse mouse)
+        {
             foreach (var box in GetBoxes())
             {
                 if (GetRelativeLocation(box, futureMouse) == RelativeLocation.Intersect && !box.Destroyed)
@@ -132,8 +162,12 @@ namespace Arkanoid_HungryMouse.ObjectManager
                     }
                     break;
                 }
-            } // Обработка коробок
+            }
+        }
 
+        // Возвращает, продолжается ли игра.
+        private bool UpdateMouseAgainstField(Mouse futureMouse, Mouse mouse)
+        {
             switch (GetRelativeToFieldLocation(futureMouse))
             {
                 case RelativeLocation.AtTheLeft:
@@ -153,36 +187,37 @@ namespace Arkanoid_HungryMouse.ObjectManager
                     }
                 case RelativeLocation.AtTheBottom:
                     {
-                        return GameState.Lost;
+                        return false;
                     }
                 default:
                     {
                         break;
                     }
-            } // Обработка стен
+            }
+            return true;
+        }
 
+        private void UpdateMouseAgainstTable(PlayerTable table, Mouse mouse)
+        {
             if (GetRelativeLocation(table, mouse) == RelativeLocation.Intersect)
             {
                 mouse.VerticalDirection = Direction.Up;
                 var distance = ((mouse.X + mouse.Width) / 2) - ((table.X + table.Width) / 2);
                 mouse.SpeedX = distance * Const.SpeedMultiplier;
-            } // Обработка столика
+            }
+        }
 
+        private void UpdateTable(PlayerTable table, PlayerTable futureTable, Direction direction)
+        {
             if (GetRelativeToFieldLocation(futureTable) == RelativeLocation.Intersect)
             {
-                Move(table, tableDirection);
-            } // Сдвинуть столик, если он не попадет за стену
-
-            Move(mouse, mouse.VerticalDirection);
-            Move(mouse);
-
-            if (GetDestroyedCount() == GetBoxes().Count)
-            {
-                return GameState.Won;
-            } // Условие победы: коробок не осталось
-
-            return GameState.Playing;
+                Move(table, direction);
+            }
         }
+
+        #endregion
+
+        #region game logic methods
 
         private void Move(Mouse mouse)
         {

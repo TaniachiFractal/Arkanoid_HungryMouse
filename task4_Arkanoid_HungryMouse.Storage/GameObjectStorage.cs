@@ -7,32 +7,22 @@ using Arkanoid_HungryMouse.Storage.Interfaces;
 
 namespace Arkanoid_HungryMouse.Storage
 {
-    /// <summary>
     /// <inheritdoc cref="IGameObjectStorage"/>
-    /// </summary>
     public class GameObjectStorage : IGameObjectStorage
     {
 
         #region fields
 
-        /// <summary>
         /// <inheritdoc cref="GameEntities.Models.Mouse"/>
-        /// </summary>
         private Mouse Mouse { get; }
 
-        /// <summary>
         /// <inheritdoc cref="GameEntities.Models.PlayerTable"/>
-        /// </summary>
         private PlayerTable PlayerTable { get; }
 
-        /// <summary>
         /// <inheritdoc cref="GameEntities.Models.Field"/>
-        /// </summary>
         private Field Field { get; }
 
-        /// <summary>
         /// Лист всех <see cref="Boxes"/>
-        /// </summary>
         private List<Box> Boxes { get; }
 
         /// <summary>
@@ -41,40 +31,6 @@ namespace Arkanoid_HungryMouse.Storage
         private int LifesCount { get; set; }
 
         #endregion
-
-        #region get fields
-
-        public List<Box> GetBoxes()
-        {
-            return Boxes;
-        }
-
-        public Field GetField()
-        {
-            return Field;
-        }
-
-        public Mouse GetMouse()
-        {
-            return Mouse;
-        }
-
-        public PlayerTable GetPlayerTable()
-        {
-            return PlayerTable;
-        }
-
-        public int GetLifesCount()
-        {
-            return LifesCount;
-        }
-
-        #endregion
-
-        public void DecreaseLifeCount()
-        {
-            LifesCount--;
-        }
 
         /// <summary>
         /// Конструктор: Инициализация полей
@@ -114,6 +70,46 @@ namespace Arkanoid_HungryMouse.Storage
             };
 
             GenerateBoxes();
+        }
+
+        #region get fields
+
+        /// <inheritdoc/>
+        public List<Box> GetBoxes()
+        {
+            return Boxes;
+        }
+
+        /// <inheritdoc/>
+        public Field GetField()
+        {
+            return Field;
+        }
+
+        /// <inheritdoc/>
+        public Mouse GetMouse()
+        {
+            return Mouse;
+        }
+
+        /// <inheritdoc/>
+        public PlayerTable GetPlayerTable()
+        {
+            return PlayerTable;
+        }
+
+        /// <inheritdoc/>
+        public int GetLifesCount()
+        {
+            return LifesCount;
+        }
+
+        #endregion
+
+        /// <inheritdoc/>
+        public void DecreaseLifeCount()
+        {
+            LifesCount--;
         }
 
         private void GenerateBoxes()

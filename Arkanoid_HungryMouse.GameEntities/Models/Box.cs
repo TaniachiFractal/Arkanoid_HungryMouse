@@ -4,7 +4,7 @@ using Arkanoid_HungryMouse.GameEntities.AbstractClasses;
 namespace Arkanoid_HungryMouse.GameEntities.Models
 {
     /// <summary>
-    /// <see cref="GameObject"/> Коробка, которую разрушает <see cref="Mouse"/>
+    /// <see cref="GameObject"/> Коробка, которую разрушает мышь
     /// </summary>
     public class Box : GameObject
     {
@@ -17,5 +17,6 @@ namespace Arkanoid_HungryMouse.GameEntities.Models
         /// Разрушен ли объект
         /// </summary>
         public bool Destroyed { get; set; }
+
     }
 }

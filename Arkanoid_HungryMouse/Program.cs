@@ -9,7 +9,7 @@ namespace Arkanoid_HungryMouse
     static internal class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        /// Точка входа в программу
         /// </summary>
         [STAThread]
         private static void Main()

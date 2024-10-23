@@ -2,6 +2,9 @@
 
 namespace Arkanoid_HungryMouse.Forms
 {
+    /// <summary>
+    /// Форма справки об игре
+    /// </summary>
     public partial class InfoForm : Form
     {
         public InfoForm()

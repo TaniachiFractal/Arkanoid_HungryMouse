@@ -2,6 +2,9 @@
 
 namespace Arkanoid_HungryMouse.Forms
 {
+    /// <summary>
+    /// Форма победы
+    /// </summary>
     public partial class YouWonForm : Form
     {
         public YouWonForm()
