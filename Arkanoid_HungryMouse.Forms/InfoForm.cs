@@ -7,6 +7,9 @@ namespace Arkanoid_HungryMouse.Forms
     /// </summary>
     public partial class InfoForm : Form
     {
+        /// <summary>
+        /// Коструктор формы справки
+        /// </summary>
         public InfoForm()
         {
             InitializeComponent();

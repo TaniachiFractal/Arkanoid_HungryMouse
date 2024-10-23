@@ -7,6 +7,9 @@ namespace Arkanoid_HungryMouse.Forms
     /// </summary>
     public partial class YouWonForm : Form
     {
+        /// <summary>
+        /// Конструктор формы победы
+        /// </summary>
         public YouWonForm()
         {
             InitializeComponent();
