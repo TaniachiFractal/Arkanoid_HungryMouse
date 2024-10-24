@@ -3,7 +3,55 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C4BD6B48-9A9E-41EE-844A-A9B546A2087F}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arkanoid_HungryMouse", "Arkanoid_HungryMouse\Arkanoid_HungryMouse.csproj", "{31274086-E75F-4216-B590-79EF58A6DB0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arkanoid_HungryMouse.GameEntities", "Arkanoid_HungryMouse.GameEntities\Arkanoid_HungryMouse.GameEntities.csproj", "{5FD936FE-41AF-4367-B012-76718B136BFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arkanoid_HungryMouse.ObjectManager", "task4_Arkanoid_HungryMouse.GameObjectManager\Arkanoid_HungryMouse.ObjectManager.csproj", "{C251C1AF-139C-4352-9652-CD8D5607F8A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arkanoid_HungryMouse.Storage", "task4_Arkanoid_HungryMouse.Storage\Arkanoid_HungryMouse.Storage.csproj", "{9CCFE9BC-AD12-4BB8-B7F9-3EFE257F6683}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arkanoid_HungryMouse.Forms", "Arkanoid_HungryMouse.Forms\Arkanoid_HungryMouse.Forms.csproj", "{DD4CB165-F909-40EF-82AE-DF85E7EBC935}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arkanoid_HungryMouse.Enums", "Arkanoid_HungryMouse.Enums\Arkanoid_HungryMouse.Enums.csproj", "{E44B68EE-114B-4AFE-B35B-DD5E52C15A2A}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31274086-E75F-4216-B590-79EF58A6DB0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31274086-E75F-4216-B590-79EF58A6DB0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31274086-E75F-4216-B590-79EF58A6DB0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31274086-E75F-4216-B590-79EF58A6DB0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FD936FE-41AF-4367-B012-76718B136BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FD936FE-41AF-4367-B012-76718B136BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FD936FE-41AF-4367-B012-76718B136BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FD936FE-41AF-4367-B012-76718B136BFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C251C1AF-139C-4352-9652-CD8D5607F8A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C251C1AF-139C-4352-9652-CD8D5607F8A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C251C1AF-139C-4352-9652-CD8D5607F8A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C251C1AF-139C-4352-9652-CD8D5607F8A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CCFE9BC-AD12-4BB8-B7F9-3EFE257F6683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CCFE9BC-AD12-4BB8-B7F9-3EFE257F6683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CCFE9BC-AD12-4BB8-B7F9-3EFE257F6683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CCFE9BC-AD12-4BB8-B7F9-3EFE257F6683}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD4CB165-F909-40EF-82AE-DF85E7EBC935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD4CB165-F909-40EF-82AE-DF85E7EBC935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD4CB165-F909-40EF-82AE-DF85E7EBC935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD4CB165-F909-40EF-82AE-DF85E7EBC935}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E44B68EE-114B-4AFE-B35B-DD5E52C15A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E44B68EE-114B-4AFE-B35B-DD5E52C15A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E44B68EE-114B-4AFE-B35B-DD5E52C15A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E44B68EE-114B-4AFE-B35B-DD5E52C15A2A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
