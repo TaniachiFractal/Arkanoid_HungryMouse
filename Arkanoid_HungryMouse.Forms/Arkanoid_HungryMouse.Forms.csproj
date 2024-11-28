@@ -151,8 +151,8 @@
       <Project>{5FD936FE-41AF-4367-B012-76718B136BFE}</Project>
       <Name>Arkanoid_HungryMouse.GameEntities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\task4_Arkanoid_HungryMouse.GameObjectManager\Arkanoid_HungryMouse.ObjectManager.csproj">
-      <Project>{C251C1AF-139C-4352-9652-CD8D5607F8A6}</Project>
+    <ProjectReference Include="..\Arkanoid_HungryMouse.ObjectManager\Arkanoid_HungryMouse.ObjectManager.csproj">
+      <Project>{c251c1af-139c-4352-9652-cd8d5607f8a6}</Project>
       <Name>Arkanoid_HungryMouse.ObjectManager</Name>
     </ProjectReference>
   </ItemGroup>

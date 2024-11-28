@@ -84,7 +84,7 @@
       <Project>{5FD936FE-41AF-4367-B012-76718B136BFE}</Project>
       <Name>Arkanoid_HungryMouse.GameEntities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\task4_Arkanoid_HungryMouse.Storage\Arkanoid_HungryMouse.Storage.csproj">
+    <ProjectReference Include="..\Arkanoid_HungryMouse.Storage\Arkanoid_HungryMouse.Storage.csproj">
       <Project>{9CCFE9BC-AD12-4BB8-B7F9-3EFE257F6683}</Project>
       <Name>Arkanoid_HungryMouse.Storage</Name>
     </ProjectReference>
