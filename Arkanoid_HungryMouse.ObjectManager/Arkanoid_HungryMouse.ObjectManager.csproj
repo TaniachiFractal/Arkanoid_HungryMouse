@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C251C1AF-139C-4352-9652-CD8D5607F8A6}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>task4_Arkanoid_HungryMouse.GameObjectManager</RootNamespace>
-    <AssemblyName>task4_Arkanoid_HungryMouse.GameObjectManager</AssemblyName>
+    <RootNamespace>Arkanoid_HungryMouse.ObjectManager</RootNamespace>
+    <AssemblyName>Arkanoid_HungryMouse.ObjectManager</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -60,6 +60,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
